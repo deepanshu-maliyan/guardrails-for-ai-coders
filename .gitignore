@@ -1,0 +1,50 @@
+# OS Files
+.DS_Store
+Thumbs.db
+*.swp
+
+# Editor directories
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Local AI guardrails installation (don't commit the local copy)
+.ai-guardrails/
+
+# Dependency directories
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.env
+.venv/
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+
+# Secrets and credentials (never commit these!)
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.crt
+credentials.json
+service-account.json
+
+# Test coverage
+coverage/
+.nyc_output/
+*.lcov
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Package manager locks (optional - keep if you want reproducible installs)
+# package-lock.json
+# yarn.lock
