@@ -1,0 +1,68 @@
+# API Route Security Review Prompt
+# Guardrails for AI Coders | https://github.com/deepanshu-maliyan/guardrails-for-ai-coders
+# HOW TO USE: Copy this file -> Paste into ChatGPT/Claude/Copilot Chat -> Paste your API route code below
+
+You are a senior API security engineer. Review the API routes/controllers below against the OWASP API Security Top 10 2023.
+
+Check every route for:
+
+OWASP API1 - Broken Object Level Authorization
+- Does every resource request verify the user owns/has access to that object?
+- Can user A access user B's resources by changing an ID?
+
+OWASP API2 - Broken Authentication
+- Is every protected route requiring valid auth tokens?
+- Are tokens properly validated (not just decoded)?
+- Are token expiry times enforced?
+
+OWASP API3 - Broken Object Property Level Authorization
+- Is the API returning more fields than needed?
+- Can users update fields they should not (mass assignment)?
+
+OWASP API4 - Unrestricted Resource Consumption
+- Are there rate limits on expensive operations?
+- Can an attacker cause server overload via unbounded requests?
+
+OWASP API5 - Broken Function Level Authorization
+- Are admin/privileged endpoints behind proper role checks?
+- Are HTTP methods (DELETE, PUT) properly restricted?
+
+OWASP API6 - Unrestricted Access to Sensitive Business Flows
+- Can core business flows be automated/abused (e.g., mass account creation)?
+
+OWASP API7 - Server Side Request Forgery
+- Does any endpoint accept a URL parameter and make server-side requests?
+
+OWASP API8 - Security Misconfiguration
+- Are CORS headers too permissive?
+- Are security headers missing (Content-Security-Policy, X-Frame-Options)?
+- Are error messages too detailed?
+
+OWASP API9 - Improper Inventory Management
+- Are deprecated/test endpoints still accessible?
+
+OWASP API10 - Unsafe Consumption of APIs
+- Is data from third-party APIs validated before use?
+
+Output format:
+
+=== API SECURITY REVIEW ===
+
+Route: [METHOD /path]
+OWASP Ref: [API1-API10]
+Severity: HIGH | MEDIUM | LOW
+Issue: [description]
+Fix: [code or steps]
+
+---
+[Repeat per route/issue]
+---
+
+SCORECARD:
+- Routes reviewed: X
+- Issues found: X
+- OWASP categories covered: [list]
+- Recommended action: [one line]
+
+=== YOUR API ROUTES ===
+[PASTE YOUR ROUTE/CONTROLLER CODE HERE]
