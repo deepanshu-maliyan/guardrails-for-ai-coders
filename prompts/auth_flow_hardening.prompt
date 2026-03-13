@@ -1,0 +1,65 @@
+# Auth Flow Hardening Prompt
+# Guardrails for AI Coders | https://github.com/deepanshu-maliyan/guardrails-for-ai-coders
+# HOW TO USE: Copy -> Paste into ChatGPT/Claude/Copilot Chat -> Paste your auth code below
+
+You are an authentication security specialist. Review and harden the auth/login code below.
+
+Audit these areas:
+
+1. PASSWORD HANDLING
+   - Is bcrypt/argon2/scrypt used? (min cost factor 12 for bcrypt)
+   - Are passwords ever logged or stored in plain text?
+   - Is there a minimum password policy enforced?
+
+2. SESSION MANAGEMENT
+   - Are session IDs regenerated after login?
+   - Is session expiry set (both idle and absolute)?
+   - Are sessions properly invalidated on logout?
+   - Are secure + httpOnly + sameSite flags set on cookies?
+
+3. JWT SECURITY (if applicable)
+   - Is 'alg: none' attack prevented?
+   - Is signature verified (not just decoded)?
+   - Is token expiry enforced (exp claim)?
+   - Are tokens invalidated on logout (token blocklist or short expiry)?
+   - Is the signing secret strong and not hardcoded?
+
+4. BRUTE FORCE PROTECTION
+   - Is account lockout implemented (e.g., 5 failed attempts -> 15 min lock)?
+   - Is rate limiting on login endpoint?
+   - Is CAPTCHA used for repeated failures?
+
+5. MFA / 2FA
+   - Is 2FA available for sensitive accounts?
+   - Are backup codes handled securely?
+   - Is TOTP secret stored encrypted?
+
+6. OAUTH / SOCIAL LOGIN (if applicable)
+   - Is state parameter used to prevent CSRF?
+   - Is the redirect_uri validated against whitelist?
+   - Are access tokens stored securely (not in localStorage)?
+
+7. ACCOUNT ENUMERATION
+   - Do login/forgot-password responses reveal whether an account exists?
+   - Are timing attacks prevented (constant time comparison)?
+
+Output format:
+
+=== AUTH SECURITY REVIEW ===
+
+Area: [Password/Session/JWT/BruteForce/MFA/OAuth/Enumeration]
+Severity: CRITICAL | HIGH | MEDIUM | LOW
+Issue: [description]
+Location: [line/function]
+Fix:
+[code snippet]
+
+---
+[Repeat]
+---
+
+HARDENED VERSION:
+Provide a complete rewritten version of the most critical function with all security fixes applied.
+
+=== YOUR AUTH CODE ===
+[PASTE YOUR LOGIN/AUTH/SESSION CODE HERE]
